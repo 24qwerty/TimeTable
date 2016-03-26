@@ -1,0 +1,199 @@
+create table Class
+(
+class_id number(3) constraint C_PK primary key,
+class_name varchar2(20) not null,
+max_student number(3),
+number_of_subject number(3) not null,
+number_of_labs number(3) not null, 
+slot1 number(3) default 0,
+slot2 number(3) default 0,
+slot3 number(3) default 0,
+slot4 number(3) default 0,
+slot5 number(3) default 0,
+slot6 number(3) default 0,
+slot7 number(3) default 0,
+slot8 number(3) default 0,
+slot9 number(3) default 0,
+slot10 number(3) default 0,
+slot11 number(3) default 0,
+slot12 number(3) default 0,
+slot13 number(3) default 0,
+slot14 number(3) default 0, 
+slot15 number(3) default 0,
+slot16 number(3) default 0,
+slot17 number(3) default 0,
+slot18 number(3) default 0,
+slot19 number(3) default 0,
+slot20 number(3) default 0,
+slot21 number(3) default 0,
+slot22 number(3) default 0,
+slot23 number(3) default 0,
+slot24 number(3) default 0,
+slot25 number(3) default 0,
+slot26 number(3) default 0,
+slot27 number(3) default 0,
+slot28 number(3) default 0,
+slot29 number(3) default 0, 
+slot30 number(3) default 0,
+slot31 number(3) default 0,
+slot32 number(3) default 0,
+slot33 number(3) default 0,
+slot34 number(3) default 0,
+slot35 number(3) default 0,
+slot36 number(3) default 0);
+
+create table Subject
+(
+subject_id number(3) constraint S_PK primary key ,
+subject_name varchar2(30) not null);
+
+create table LabD
+(
+lab_id number(3) constraint LD_PK primary key,
+lab_name varchar2(30) not null,
+slot1 number(3) default 0,
+slot2 number(3) default 0,
+slot3 number(3) default 0,
+slot4 number(3) default 0,
+slot5 number(3) default 0,
+slot6 number(3) default 0,
+slot7 number(3) default 0,
+slot8 number(3) default 0,
+slot9 number(3) default 0,
+slot10 number(3) default 0,
+slot11 number(3) default 0,
+slot12 number(3) default 0,
+slot13 number(3) default 0,
+slot14 number(3) default 0, 
+slot15 number(3) default 0,
+slot16 number(3) default 0,
+slot17 number(3) default 0,
+slot18 number(3) default 0,
+slot19 number(3) default 0,
+slot20 number(3) default 0,
+slot21 number(3) default 0,
+slot22 number(3) default 0,
+slot23 number(3) default 0,
+slot24 number(3) default 0,
+slot25 number(3) default 0,
+slot26 number(3) default 0,
+slot27 number(3) default 0,
+slot28 number(3) default 0,
+slot29 number(3) default 0, 
+slot30 number(3) default 0,
+slot31 number(3) default 0,
+slot32 number(3) default 0,
+slot33 number(3) default 0,
+slot34 number(3) default 0,
+slot35 number(3) default 0,
+slot36 number(3) default 0);
+
+create table teacher
+(
+teacher_id number(3) constraint T_PK primary key,
+name varchar2(30) not null,
+phone varchar2(10),
+email varchar2(30),
+department varchar2(30),
+slot1 number(3) default 0,
+slot2 number(3) default 0,
+slot3 number(3) default 0,
+slot4 number(3) default 0,
+slot5 number(3) default 0,
+slot6 number(3) default 0,
+slot7 number(3) default 0,
+slot8 number(3) default 0,
+slot9 number(3) default 0,
+slot10 number(3) default 0,
+slot11 number(3) default 0,
+slot12 number(3) default 0,
+slot13 number(3) default 0,
+slot14 number(3) default 0, 
+slot15 number(3) default 0,
+slot16 number(3) default 0,
+slot17 number(3) default 0,
+slot18 number(3) default 0,
+slot19 number(3) default 0,
+slot20 number(3) default 0,
+slot21 number(3) default 0,
+slot22 number(3) default 0,
+slot23 number(3) default 0,
+slot24 number(3) default 0,
+slot25 number(3) default 0,
+slot26 number(3) default 0,
+slot27 number(3) default 0,
+slot28 number(3) default 0,
+slot29 number(3) default 0, 
+slot30 number(3) default 0,
+slot31 number(3) default 0,
+slot32 number(3) default 0,
+slot33 number(3) default 0,
+slot34 number(3) default 0,
+slot35 number(3) default 0,
+slot36 number(3) default 0);
+
+create table Lecture
+(
+TLec_id number(5) ,
+class_id number(3) not null,
+teacher_id number(3) not null,
+subject_id number(3) not null,
+slot number(3) default 0,
+constraint C_LE_FK  foreign key (class_id) references Class(class_id),
+constraint T_LE_FK  foreign key (teacher_id) references Teacher(teacher_id),
+constraint S_LE_FK  foreign key (subject_id) references Subject(subject_id),
+constraint LE_PK  primary key (TLec_id)); 
+
+create table Lab
+(
+TLab_id number(5),
+class_id number(3) not null,
+teacher_id number(3) not null,
+lab_id number(3) not null,
+subject_id number(3) not null,
+number_of_group number(3) not null,
+slot number(3) default 0,
+constraint C_L_FK  foreign key (class_id) references Class(class_id),
+constraint T_L_FK  foreign key (teacher_id) references Teacher(teacher_id),
+constraint S_L_FK  foreign key (subject_id) references Subject(subject_id),
+constraint LD_L_FK foreign key (lab_id) references LabD(lab_id), 
+constraint L_PK  primary key (TLab_id)); 
+
+insert into lecture
+values(1,1,1,1,4);
+values(2,1,2,2,4);
+values(3,2,1,4,4);
+values(4,2,2,5,4);
+values(5,2,3,5,4);
+
+INSERT into teacher(teacher_id,name,phone,email,department)
+values(1,'a','11','a','cse');
+values(2,'b','12','b','cse');
+values(3,'c','12','c','cse');
+
+
+INSERT into labd(lab_id,lab_name)
+values(1,'lab1');
+values(2,'lab2');
+values(3,'lab3');
+
+
+INSERT into subject(subject_id,subject_name)
+values(1,'sub1');
+values(2,'sub2');
+values(3,'sub3');
+values(4,'sub4');
+values(5,'sub5');
+values(6,'sub6');
+
+INSERT into Class(class_id,class_name,max_student,number_of_subject,number_of_labs)
+values(1,'be1',60,3,3);
+values(2,'be2',60,3,3);
+
+insert into lab
+values(1,1,1,1,1,3,3);
+values(2,1,2,2,2,3,3);
+values(3,1,3,3,3,3,3);
+values(4,2,1,1,4,3,3);
+values(5,2,2,2,5,3,3);
+values(6,2,3,3,6,3,3);
